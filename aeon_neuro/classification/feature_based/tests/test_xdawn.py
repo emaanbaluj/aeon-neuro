@@ -170,9 +170,7 @@ def test_xdawn_classifier_decimate_one_matches_default():
     )
 
     probs_default = XDAWNClassifier(n_components=2).fit(X, y).predict_proba(X)
-    probs_one = (
-        XDAWNClassifier(n_components=2, decimate=1).fit(X, y).predict_proba(X)
-    )
+    probs_one = XDAWNClassifier(n_components=2, decimate=1).fit(X, y).predict_proba(X)
 
     np.testing.assert_allclose(probs_default, probs_one)
 
