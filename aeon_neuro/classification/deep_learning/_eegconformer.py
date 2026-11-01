@@ -144,7 +144,6 @@ class EEGConformerClassifier(BaseClassifier):
             [self._class_dictionary[label] for label in y], dtype=np.int64
         )
 
-        
         rng = check_random_state(self.random_state)
         seed = int(rng.randint(np.iinfo(np.int32).max))
         torch.manual_seed(seed)
@@ -212,7 +211,7 @@ class EEGConformerClassifier(BaseClassifier):
             )
 
         X = np.asarray(X, dtype=np.float32, order="C")
- 
+
         dataset = TensorDataset(torch.from_numpy(X))
         loader = DataLoader(
             dataset,
@@ -240,7 +239,6 @@ class EEGConformerClassifier(BaseClassifier):
 
     def _predict(self, X: np.ndarray) -> np.ndarray:
         """Predict class labels for X."""
- 
         probs = self._predict_proba(X)
         rng = check_random_state(self.random_state)
 
